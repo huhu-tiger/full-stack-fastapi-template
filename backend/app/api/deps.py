@@ -19,8 +19,21 @@ reusable_oauth2 = OAuth2PasswordBearer(
 
 
 def get_db() -> Generator[Session, None, None]:
-    with Session(engine) as session:
+    """
+    数据库会话依赖注入，包含超时和错误处理
+    """
+    session = Session(engine)
+    try:
+        # 设置会话级别的超时（如果需要）
+        # session.execute(text("SET statement_timeout = '30s'"))
         yield session
+    except Exception as e:
+        # 发生错误时回滚事务
+        session.rollback()
+        raise e
+    finally:
+        # 确保会话被关闭
+        session.close()
 
 
 SessionDep = Annotated[Session, Depends(get_db)]

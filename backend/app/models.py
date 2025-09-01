@@ -3,6 +3,9 @@ import uuid
 from pydantic import EmailStr
 from sqlmodel import Field, Relationship, SQLModel
 
+# 导入 hlkj 模块的模型，使 Alembic 能够检测到它们
+from app.hlkj.models import AppWare  # noqa
+
 
 # Shared properties
 class UserBase(SQLModel):
