@@ -11,4 +11,9 @@ export default defineConfig({
     },
   },
   plugins: [react(), TanStackRouterVite()],
+  server: {
+    watch: {
+      usePolling: true, // 在某些系统上可能需要
+    },
+  },
 })

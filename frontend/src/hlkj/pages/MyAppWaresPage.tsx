@@ -36,7 +36,7 @@ function getMyAppWaresQueryOptions({ page }: { page: number }) {
         skip: (page - 1) * PER_PAGE, 
         limit: PER_PAGE 
       }),
-    queryKey: ["my-appwares", { page }],
+    queryKey: ["appwares", { page }],
   }
 }
 

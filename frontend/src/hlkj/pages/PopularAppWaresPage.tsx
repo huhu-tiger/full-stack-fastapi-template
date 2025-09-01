@@ -17,7 +17,7 @@ import { AppWaresService } from "../services/appwares"
 function getPopularAppWaresQueryOptions() {
   return {
     queryFn: () => AppWaresService.readPopularAppWares({ limit: 20 }),
-    queryKey: ["popular-appwares"],
+    queryKey: ["appwares"],
   }
 }
 
